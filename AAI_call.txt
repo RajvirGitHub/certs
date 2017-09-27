@@ -1,0 +1,16 @@
+For getting list of AAI API's-
+https://wiki.onap.org/display/DW/AAI+API?preview=/1015849/1016932/openecomp_aai_api_index.html
+
+Example-
+URL- https://104.130.165.65:8443/aai/v8/business/customers
+  
+Headers- 
+ content-type - application/json
+  x-fromappid - VID
+  x-transactionid - 11112
+ authorization -  Basic VklEOlZJRA==
+accept - application/json
+ 
+
+For getting sample payload for put request-
+https://wiki.onap.org/pages/viewpage.action?pageId=10782088
