@@ -1,0 +1,34 @@
+Web-modeler is up and running on Rackspace.
+
+Please check and do the update accordingly.
+
+
+Below are the details:
+
+
+Camunda URL:
+•	http://104.130.165.61:8080/camunda/app/cockpit/default/#/dashboard
+•	http://104.130.165.61:8080/camunda-welcome/index.html
+
+
+Path
+•	/root/onap_poc/Camunda
+•	/root/onap_poc/Web-medeler
+
+Modeler URL
+•	http://104.130.165.61:9005
+
+Start cammand
+•	nohup grunt auto-build &
+
+Box Details
+-------------------------------
+VM : att_roadshow_demo
+•         IP : 104.130.165.61
+•         
+Root password : nqQ5rw7Ki2gBaoXuLU95wpub
+
+Private key for root is attached. Public key is installed on the server. Better to share it on need to know basis.
+
+
+USE – Putty and WINSCP
