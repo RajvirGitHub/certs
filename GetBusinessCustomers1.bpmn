@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.8.2">
+  <bpmn:process id="GetBusinessCustomers1" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1mz6b7a</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="GetBusinessCustomerId" name="GetBusinessCustomers">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">https://104.130.165.65:8443/aai/v8/business/customers</camunda:inputParameter>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="content-type">application/json</camunda:entry>
+                <camunda:entry key="x-fromappid">VID</camunda:entry>
+                <camunda:entry key="x-transactionid">11112</camunda:entry>
+                <camunda:entry key="authorization">Basic VklEOlZJRA==</camunda:entry>
+                <camunda:entry key="accept">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:outputParameter name="Output">${response}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1mz6b7a</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xidccp</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1mz6b7a" sourceRef="StartEvent_1" targetRef="GetBusinessCustomerId" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xidccp" sourceRef="GetBusinessCustomerId" targetRef="Display" />
+    <bpmn:endEvent id="EndEvent_0ck7dqi">
+      <bpmn:incoming>SequenceFlow_0zifp2h</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0zifp2h" sourceRef="Display" targetRef="EndEvent_0ck7dqi" />
+    <bpmn:scriptTask id="Display" name="Display" scriptFormat="groovy">
+      <bpmn:incoming>SequenceFlow_0xidccp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0zifp2h</bpmn:outgoing>
+      <bpmn:script><![CDATA[println"Output is $Output"]]></bpmn:script>
+    </bpmn:scriptTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="GetBusinessCustomers1">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="239" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="146" y="275" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0eioqzc_di" bpmnElement="GetBusinessCustomerId">
+        <dc:Bounds x="305" y="217" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mz6b7a_di" bpmnElement="SequenceFlow_1mz6b7a">
+        <di:waypoint xsi:type="dc:Point" x="209" y="257" />
+        <di:waypoint xsi:type="dc:Point" x="305" y="257" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="257" y="236" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xidccp_di" bpmnElement="SequenceFlow_0xidccp">
+        <di:waypoint xsi:type="dc:Point" x="405" y="257" />
+        <di:waypoint xsi:type="dc:Point" x="481" y="257" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="443" y="236" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0ck7dqi_di" bpmnElement="EndEvent_0ck7dqi">
+        <dc:Bounds x="648" y="239" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="666" y="279" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zifp2h_di" bpmnElement="SequenceFlow_0zifp2h">
+        <di:waypoint xsi:type="dc:Point" x="581" y="257" />
+        <di:waypoint xsi:type="dc:Point" x="648" y="257" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="614.5" y="236" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_1r8tsd8_di" bpmnElement="Display">
+        <dc:Bounds x="481" y="217" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
