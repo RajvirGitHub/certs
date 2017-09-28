@@ -1,0 +1,13 @@
+Below service has been deployed on rack space.
+
+https://104.130.165.65:8443/aai/v8/business/customers/customer/{global-customer-id}
+sample data 
+global-customer-id    :   Demonstration
+
+ 
+
+
+https://104.130.165.65:8443/aai/v8/business/customers
+
+ 
+
